@@ -2,6 +2,7 @@ package server;
 
 import server.auth.AuthService;
 import server.auth.BaseAuthService;
+import server.auth.DatabaseAuthService;
 import server.client.ClientHandler;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class MyServer {
 
     private static final int PORT = 8189;
 
-    private final AuthService authService = new BaseAuthService();
+    private final AuthService authService = new DatabaseAuthService();
 
     private List<ClientHandler> clients = new ArrayList<>();
 
