@@ -1,8 +1,9 @@
-package Client.controller;
+package client.controller;
 
-import Client.controller.message.IMessageService;
-import Client.controller.message.ServerMessageService;
+
+import client.controller.message.IMessageService;
 import javafx.application.Platform;
+
 
 import java.io.Closeable;
 import java.io.DataInputStream;

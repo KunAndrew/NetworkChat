@@ -1,7 +1,5 @@
-package Client.controller.message;
+package client.controller.message;
 
-import java.io.Closeable;
-import java.io.IOException;
 import java.io.Closeable;
 import java.io.IOException;
 

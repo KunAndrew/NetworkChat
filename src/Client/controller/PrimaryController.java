@@ -1,7 +1,7 @@
-package Client.controller;
+package client.controller;
 
-import Client.controller.message.IMessageService;
-import Client.controller.message.ServerMessageService;
+
+import client.controller.message.IMessageService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import сlient.controller.message.ServerMessageService;
 
 public class PrimaryController implements Initializable {
 

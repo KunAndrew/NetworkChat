@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Client.controller.PrimaryController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controller.PrimaryController">
     <children>
         <HBox fx:id="authPanel" alignment="CENTER" layoutX="42.0" layoutY="98.0">
             <TextField fx:id="loginField" promptText="Логин" HBox.hgrow="ALWAYS" />

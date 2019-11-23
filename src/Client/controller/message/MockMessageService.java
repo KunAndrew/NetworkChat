@@ -1,6 +1,7 @@
-package Client.controller.message;
+package client.controller.message;
 
 import javafx.scene.control.TextArea;
+
 
 public class MockMessageService implements IMessageService {
 

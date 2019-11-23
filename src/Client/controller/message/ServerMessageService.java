@@ -1,14 +1,18 @@
-package Client.controller.message;
+package сlient.controller.message;
 
-import Client.controller.Network;
-import Client.controller.PrimaryController;
+
+
+import client.controller.Network;
+import client.controller.PrimaryController;
+import client.controller.message.IMessageService;
+import client.controller.message.ServerConnectionException;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
+
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class ServerMessageService implements IMessageService {

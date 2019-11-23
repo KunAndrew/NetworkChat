@@ -1,4 +1,4 @@
-package Client.controller.message;
+package client.controller.message;
 
 public class ServerConnectionException extends RuntimeException {
 
