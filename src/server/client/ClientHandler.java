@@ -48,7 +48,7 @@ public class ClientHandler {
                 return;
             }
             if (clientMessage.startsWith("/w")){
-                String mess[]=clientMessage.split(" ",2);
+                String mess[]=clientMessage.split(" ",3);
                 String nick=mess[1];
                 myServer.privateMessage(mess[2],nick,clientName);
             }else {
