@@ -70,15 +70,6 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    public void sendText(ActionEvent actionEvent) {
-        sendMessage();
-    }
-
-    @FXML
-    public void sendMessage(ActionEvent actionEvent) {
-        sendMessage();
-    }
-
     private void sendMessage() {
         String message = messageText.getText();
         chatTextArea.appendText("Я: " + message + System.lineSeparator());
@@ -95,9 +86,13 @@ public class PrimaryController implements Initializable {
     }
 
     @FXML
-    public void sendAuth(ActionEvent actionEvent) {
+    public void sendAuth(javafx.event.ActionEvent actionEvent) {
         String login = loginField.getText();
         String password = passField.getText();
         messageService.sendMessage(String.format("/auth %s %s", login, password));
+    }
+    @FXML
+    public void sendText(javafx.event.ActionEvent actionEvent) {
+        sendMessage();
     }
 }
