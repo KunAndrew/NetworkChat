@@ -1,11 +1,9 @@
-package сlient.controller.message;
+package client.controller.message;
 
-
-
+import client.controller.ChatLogmanager;
 import client.controller.Network;
 import client.controller.PrimaryController;
-import client.controller.message.IMessageService;
-import client.controller.message.ServerConnectionException;
+import client.controller.TextFileLogManager;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 
@@ -25,9 +23,11 @@ public class ServerMessageService implements IMessageService {
     private int hostPort;
 
     private final TextArea chatTextArea;
-    private PrimaryController primaryController;
+    public static PrimaryController primaryController;
     private boolean needStopServerOnClosed;
     private Network network;
+
+    public static ChatLogmanager chatLogmanager = new TextFileLogManager();
 
     public ServerMessageService(PrimaryController primaryController, boolean needStopServerOnClosed) {
         this.chatTextArea = primaryController.chatTextArea;
@@ -35,7 +35,6 @@ public class ServerMessageService implements IMessageService {
         this.needStopServerOnClosed = needStopServerOnClosed;
         initialize();
     }
-
 
 
     private void initialize() {
@@ -53,10 +52,9 @@ public class ServerMessageService implements IMessageService {
 
     private void readProperties() {
         Properties serverProperties = new Properties();
-
    /*     try (InputStream inputStream = getClass().getResourceAsStream("C:\\Users\\Andrew\\Desktop")) {
             serverProperties.load(inputStream);*/
-        try (FileInputStream inputStream =new FileInputStream( new File("C:\\Java\\Chat\\src\\Client\\resources\\application.properties"))) {
+        try (FileInputStream inputStream = new FileInputStream(new File("C:\\Java\\Chat\\src\\Client\\resources\\application.properties"))) {
             serverProperties.load(inputStream);
             hostAddress = serverProperties.getProperty(HOST_ADDRESS_PROP);
             hostPort = Integer.parseInt(serverProperties.getProperty(HOST_PORT_PROP));
@@ -70,6 +68,13 @@ public class ServerMessageService implements IMessageService {
     @Override
     public void sendMessage(String message) {
         network.send(message);
+        String mess[] = message.split(" ", 3);
+        String pref = mess[0];
+        System.out.println(mess[0]);
+        if (pref.equals("/auth")) {
+        } else {
+            chatLogmanager.addToLog(message);
+        }
     }
 
     @Override
@@ -77,15 +82,14 @@ public class ServerMessageService implements IMessageService {
         if (message.startsWith("/authok")) {
             primaryController.authPanel.setVisible(false);
             primaryController.chatPanel.setVisible(true);
-        }
-        else if (primaryController.authPanel.isVisible()) {
+        } else if (primaryController.authPanel.isVisible()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Authentication is failed");
             alert.setContentText(message);
             alert.showAndWait();
-        }
-        else {
+        } else {
             chatTextArea.appendText("Сервер: " + message + System.lineSeparator());
+            chatLogmanager.addToLog(message);
         }
     }
 

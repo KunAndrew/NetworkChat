@@ -13,6 +13,7 @@ public class ClientHandler {
 
     private String clientName;
 
+
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
@@ -47,6 +48,7 @@ public class ClientHandler {
             if (clientMessage.equals("/end")) {
                 return;
             }
+
             if (clientMessage.startsWith("/w")){
                 String mess[]=clientMessage.split(" ",3);
                 String nick=mess[1];

@@ -1,7 +1,6 @@
 package server;
 
 import server.auth.AuthService;
-import server.auth.BaseAuthService;
 import server.auth.DatabaseAuthService;
 import server.client.ClientHandler;
 
@@ -21,6 +20,7 @@ public class MyServer {
 
     public MyServer() {
         System.out.println("Server is running");
+
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             authService.start();
             while (true) {
