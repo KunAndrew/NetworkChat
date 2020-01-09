@@ -1,2 +1,3 @@
 # NetworkChat
-Client-Server Chat based on TCP. JavaFX,JDBC.
+Client-Server Chat based on TCP. JavaFX, JDBC java-multithreading.
+.
