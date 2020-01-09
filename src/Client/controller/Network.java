@@ -1,10 +1,8 @@
 package client.controller;
 
-
 import client.controller.message.IMessageService;
+import client.controller.message.ServerMessageService;
 import javafx.application.Platform;
-
-
 import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -21,6 +19,8 @@ public class Network implements Closeable {
     private DataInputStream inputStream;
     private DataOutputStream outputStream;
 
+
+
     public Network(String serverAddress, int port, IMessageService messageService) throws IOException {
         this.serverAddress = serverAddress;
         this.port = port;
@@ -31,6 +31,8 @@ public class Network implements Closeable {
         this.socket = new Socket(serverAddress, port);
         this.inputStream = new DataInputStream(socket.getInputStream());
         this.outputStream = new DataOutputStream(socket.getOutputStream());
+
+        ServerMessageService.chatLogmanager.initLog();
 
         new Thread(() -> {
             while (true) {

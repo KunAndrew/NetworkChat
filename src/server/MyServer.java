@@ -28,6 +28,7 @@ public class MyServer {
         PropertyConfigurator.configure(log4jConfPath);
         file.info("Server is running");
 
+
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             authService.start();
             while (true) {
