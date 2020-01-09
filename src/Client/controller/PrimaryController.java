@@ -2,18 +2,17 @@ package client.controller;
 
 
 import client.controller.message.IMessageService;
+import client.controller.message.ServerMessageService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import сlient.controller.message.ServerMessageService;
+
 
 public class PrimaryController implements Initializable {
 
@@ -44,6 +43,7 @@ public class PrimaryController implements Initializable {
         } catch (Exception e) {
             showError(e);
         }
+
     }
 
     private void showError(Exception e) {
@@ -74,7 +74,12 @@ public class PrimaryController implements Initializable {
         String message = messageText.getText();
         chatTextArea.appendText("Я: " + message + System.lineSeparator());
         messageService.sendMessage(message);
-        //messageText.clear();
+        messageText.clear();
+    }
+
+
+    public void writeLog(String s) {
+        chatTextArea.appendText(s);
     }
 
     public void shutdown() {
